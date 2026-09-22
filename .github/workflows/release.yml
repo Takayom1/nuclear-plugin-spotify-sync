@@ -1,0 +1,39 @@
+name: Release
+
+# Push a tag like v1.0.1 (matching package.json "version") to publish a
+# GitHub release with the plugin.zip that Nuclear's plugin store downloads.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run check
+
+      - name: Check that the tag matches package.json
+        run: |
+          VERSION="v$(node -p "require('./package.json').version")"
+          if [ "$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $VERSION"
+            exit 1
+          fi
+
+      - run: npm run package
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: plugin.zip
+          generate_release_notes: true

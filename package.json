@@ -1,0 +1,69 @@
+{
+  "name": "nuclear-plugin-spotify-home",
+  "version": "1.0.0",
+  "description": "Spotify home for Nuclear: Daily Mixes, new releases from your artists, Top 50 charts and your Liked Songs as sidebar tabs",
+  "author": "takayom1",
+  "license": "AGPL-3.0-only",
+  "main": "dist/index.js",
+  "type": "module",
+  "nuclear": {
+    "displayName": "Home & Liked Songs for Spotify",
+    "category": "dashboard",
+    "categories": [
+      "dashboard",
+      "playlists"
+    ],
+    "icon": {
+      "type": "link",
+      "link": "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png"
+    },
+    "permissions": [
+      "network",
+      "storage"
+    ]
+  },
+  "keywords": [
+    "nuclear",
+    "plugin",
+    "spotify",
+    "liked-songs",
+    "daily-mix",
+    "charts",
+    "dashboard"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takayom1/nuclear-plugin-spotify-home.git"
+  },
+  "bugs": {
+    "url": "https://github.com/takayom1/nuclear-plugin-spotify-home/issues"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --format=cjs --platform=browser --target=es2022 --charset=utf8 --outfile=dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@nuclearplayer/plugin-sdk": "^2.8.3",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "happy-dom": "^20.0.0",
+    "prettier": "^3.9.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.0"
+  }
+}
