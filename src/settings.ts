@@ -43,7 +43,7 @@ export const registerSettings = (api: NuclearPluginAPI) =>
       category: CATEGORY,
       kind: 'string',
       default: '',
-      widget: { type: 'textarea', rows: 4, placeholder: 'https://open.spotify.com/playlist/…' },
+      widget: { type: 'text', placeholder: 'https://open.spotify.com/playlist/…' },
     },
     {
       id: SETTINGS.chartLinks,
@@ -52,7 +52,7 @@ export const registerSettings = (api: NuclearPluginAPI) =>
       category: CATEGORY,
       kind: 'string',
       default: DEFAULT_CHART_LINKS,
-      widget: { type: 'textarea', rows: 3 },
+      widget: { type: 'text' },
     },
     {
       id: SETTINGS.releaseDays,

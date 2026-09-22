@@ -76,17 +76,23 @@ export const parseRelease = (album: any, fallbackType: string): SpotifyRelease =
 export const parsePlaylistId = (text: string) =>
   text.match(/playlist[/:]([A-Za-z0-9]{22})/)?.[1] ?? null;
 
-/** Unique playlist ids from free text (one link per line, commas or spaces also work). */
+/**
+ * Unique playlist ids from free text. Any separator works, even none at all:
+ * Nuclear renders multi-line settings as a single-line input, so pasted links
+ * can end up glued together.
+ */
 export const parsePlaylistLinks = (value: string | undefined) => {
   const ids: string[] = [];
-  for (const chunk of (value ?? '').split(/[\s,]+/)) {
-    const id = parsePlaylistId(chunk);
-    if (id && !ids.includes(id)) {
+  for (const [, id] of (value ?? '').matchAll(/playlist[/:]([A-Za-z0-9]{22})/g)) {
+    if (!ids.includes(id)) {
       ids.push(id);
     }
   }
   return ids;
 };
+
+/** Settings value for a list of playlist ids. */
+export const formatPlaylistLinks = (ids: string[]) => ids.map(playlistUrl).join(' ');
 
 export const playlistUrl = (id: string) => `https://open.spotify.com/playlist/${id}`;
 

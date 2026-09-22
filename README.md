@@ -49,7 +49,7 @@ Available under **Settings → Spotify Home**.
 | --- | --- | --- |
 | Spotify Client ID | – | Client ID of your Spotify app |
 | Redirect URI | `http://127.0.0.1:8888/callback` | Must match your Spotify app settings |
-| Mix links | – | Extra mixes for the Made for you section, one link per line |
+| Mix links | – | Extra mixes for the Made for you section, links separated by spaces |
 | Charts | Top 50 Global, Top 50 USA | Playlists shown in the Charts section |
 | New releases window | 30 days | How long a release counts as new |
 | Liked Songs refresh interval | 15 min | Background sync interval; 0 turns it off |

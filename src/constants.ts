@@ -21,4 +21,4 @@ export const DEFAULT_REDIRECT_URI = 'http://127.0.0.1:8888/callback';
 export const DEFAULT_CHART_LINKS = [
   'https://open.spotify.com/playlist/37i9dQZEVXbMDoHDwVN2tF', // Top 50 - Global
   'https://open.spotify.com/playlist/37i9dQZEVXbLRQDuF5jeBp', // Top 50 - USA
-].join('\n');
+].join(' ');

@@ -202,10 +202,10 @@ export const ru: Messages = {
     'После каждого изменения лайков пересоздавать плейлист «Spotify · Любимые треки».',
   'settings.mixLinks.title': 'Ссылки на миксы',
   'settings.mixLinks.description':
-    'Daily Mix, Discover Weekly, Release Radar, daylist и т. п. — по одной ссылке в строке (Spotify → ··· → Поделиться → Скопировать ссылку). Миксы из медиатеки Spotify находятся сами.',
+    'Daily Mix, Discover Weekly, Release Radar, daylist и т. п. — ссылки через пробел (Spotify → ··· → Поделиться → Скопировать ссылку). Миксы из медиатеки Spotify находятся сами.',
   'settings.chartLinks.title': 'Чарты',
   'settings.chartLinks.description':
-    'Плейлисты для раздела «Чарты», по одной ссылке в строке. По умолчанию Top 50 Global и Top 50 USA.',
+    'Плейлисты для раздела «Чарты», ссылки через пробел. По умолчанию Top 50 Global и Top 50 USA.',
   'settings.releaseDays.title': 'Новинки за последние',
   'settings.releaseDays.description': 'Сколько дней считать релиз новым.',
   'settings.daysUnit': 'дн.',

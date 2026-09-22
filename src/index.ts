@@ -30,7 +30,8 @@ const syncLocale = async (api: NuclearPluginAPI) => {
   try {
     setLocale(resolveLocale(await api.Settings.getGlobal<string>(NUCLEAR_LANGUAGE_SETTING)));
   } catch {
-    setLocale(resolveLocale(navigator.language));
+    // Nuclear's own default language is English.
+    setLocale('en');
   }
   return getLocale() !== previous;
 };

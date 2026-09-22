@@ -203,10 +203,10 @@ export const en = {
     'Recreate the “Spotify · Liked Songs” playlist after every change to your likes.',
   'settings.mixLinks.title': 'Mix links',
   'settings.mixLinks.description':
-    'Daily Mix, Discover Weekly, Release Radar, daylist, etc. — one link per line (Spotify → ··· → Share → Copy link). Mixes saved to your Spotify library are found automatically.',
+    'Daily Mix, Discover Weekly, Release Radar, daylist, etc. — paste links separated by spaces (Spotify → ··· → Share → Copy link). Mixes saved to your Spotify library are found automatically.',
   'settings.chartLinks.title': 'Charts',
   'settings.chartLinks.description':
-    'Playlists for the Charts section, one link per line. Top 50 Global and Top 50 USA by default.',
+    'Playlists for the Charts section, links separated by spaces. Top 50 Global and Top 50 USA by default.',
   'settings.releaseDays.title': 'New releases window',
   'settings.releaseDays.description': 'How many days a release counts as new.',
   'settings.daysUnit': 'days',

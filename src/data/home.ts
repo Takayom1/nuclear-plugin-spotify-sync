@@ -21,7 +21,13 @@ import { albumToTracks, toNuclearTrack } from '../nuclear/mappers';
 import { SETTINGS } from '../settings';
 import { HOME_SCOPES } from '../spotify/auth';
 import type { SpotifyClient } from '../spotify/client';
-import { idFromUri, parsePlaylistId, parsePlaylistLinks, playlistUrl } from '../spotify/parse';
+import {
+  formatPlaylistLinks,
+  idFromUri,
+  parsePlaylistId,
+  parsePlaylistLinks,
+  playlistUrl,
+} from '../spotify/parse';
 import { SpotifyError, type SpotifyArtistInfo, type SpotifyRelease } from '../spotify/types';
 import { errorMessage, forEachConcurrent } from '../utils/async';
 import { parseReleaseDate } from '../utils/format';
@@ -324,24 +330,18 @@ export class Home extends Store<HomeState> {
     if (!id) {
       throw new SpotifyError(t('home.invalidLink'));
     }
-    const current = (await this.api.Settings.get<string>(SETTINGS.mixLinks)) ?? '';
-    if (!parsePlaylistLinks(current).includes(id)) {
-      await this.api.Settings.set(
-        SETTINGS.mixLinks,
-        `${current.trim()}\n${playlistUrl(id)}`.trim(),
-      );
+    const current = parsePlaylistLinks(await this.api.Settings.get<string>(SETTINGS.mixLinks));
+    if (!current.includes(id)) {
+      await this.api.Settings.set(SETTINGS.mixLinks, formatPlaylistLinks([...current, id]));
     }
     await this.loadMixes(true);
   }
 
   async removeMixLink(id: string) {
-    const current = (await this.api.Settings.get<string>(SETTINGS.mixLinks)) ?? '';
+    const current = parsePlaylistLinks(await this.api.Settings.get<string>(SETTINGS.mixLinks));
     await this.api.Settings.set(
       SETTINGS.mixLinks,
-      current
-        .split(/\r?\n/)
-        .filter((line) => parsePlaylistId(line) !== id)
-        .join('\n'),
+      formatPlaylistLinks(current.filter((item) => item !== id)),
     );
     this.update({
       mixes: { ...this.state.mixes, items: this.state.mixes.items.filter((mix) => mix.id !== id) },

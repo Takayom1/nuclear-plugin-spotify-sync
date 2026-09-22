@@ -22,6 +22,14 @@ describe('playlist links', () => {
     expect(parsePlaylistLinks(undefined)).toEqual([]);
   });
 
+  it('splits links glued together by a single-line input', () => {
+    expect(
+      parsePlaylistLinks(
+        'https://open.spotify.com/playlist/37i9dQZEVXbMDoHDwVN2tFhttps://open.spotify.com/playlist/37i9dQZEVXbLRQDuF5jeBp',
+      ),
+    ).toEqual(['37i9dQZEVXbMDoHDwVN2tF', '37i9dQZEVXbLRQDuF5jeBp']);
+  });
+
   it('reads ids from URIs', () => {
     expect(idFromUri('spotify:artist:abc123')).toBe('abc123');
     expect(idFromUri(null)).toBeNull();
