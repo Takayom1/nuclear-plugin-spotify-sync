@@ -74,10 +74,10 @@ Tracks are queued with the `spotify` provider ids that the official Spotify plug
 npm install
 npm run check     # typecheck, lint, formatting, tests
 npm run build     # bundles src/index.ts to dist/index.js
-npm run package   # build + plugin.zip for a GitHub release
+npm run package   # build + plugin.zip and release/ folder
 ```
 
-To try local changes, run `npm run build`, then in Nuclear choose **Plugins → Add Plugin** and select this folder. Use the reload button on the plugin after each rebuild.
+To try local changes, run `npm run package`, then in Nuclear choose **Plugins → Add Plugin** and select the generated `release/` folder. After each `npm run package`, use the reload button on the plugin.
 
 Pushing a `v*` tag runs the release workflow, which checks, builds and attaches `plugin.zip` to a GitHub release.
 

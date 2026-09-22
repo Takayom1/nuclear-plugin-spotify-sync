@@ -1,11 +1,17 @@
 // Builds plugin.zip for a GitHub release: the bundled entry point plus the
 // manifest, README and licence at the archive root, as the registry expects.
 // A minimal ZIP writer keeps the output identical on every OS.
-import { readFileSync, writeFileSync } from 'node:fs';
+//
+// The same files are also copied to release/, a lightweight folder for
+// "Plugins → Add Plugin" during development (Nuclear copies the whole folder,
+// so installing the repository itself would drag node_modules along).
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { deflateRawSync } from 'node:zlib';
 
 const FILES = ['package.json', 'README.md', 'LICENSE', 'CHANGELOG.md', 'dist/index.js'];
 const OUTPUT = 'plugin.zip';
+const STAGE = 'release';
 
 const CRC_TABLE = Array.from({ length: 256 }, (_, n) => {
   let c = n;
@@ -79,3 +85,10 @@ end.writeUInt32LE(offset, 16);
 
 writeFileSync(OUTPUT, Buffer.concat([...locals, ...centrals, end]));
 console.log(`Created ${OUTPUT} (${FILES.join(', ')})`);
+
+rmSync(STAGE, { recursive: true, force: true });
+for (const name of FILES) {
+  mkdirSync(join(STAGE, dirname(name)), { recursive: true });
+  cpSync(name, join(STAGE, name));
+}
+console.log(`Staged the same files in ${STAGE}/`);

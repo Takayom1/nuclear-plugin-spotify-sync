@@ -2,3 +2,4 @@ node_modules/
 dist/
 plugin.zip
 *.log
+release/
