@@ -11,6 +11,9 @@ body[data-plugin-tab-active] [data-testid="sidebar-navigation"] a[href] [data-te
   font-weight: inherit !important;
 }
 main[data-plugin-tab-active] > :not([data-nuclear-plugin-view]) { display: none !important; }
+/* Like Nuclear's own views: scrollable, but without the native scrollbar. */
+main[data-plugin-tab-active] { scrollbar-width: none; }
+main[data-plugin-tab-active]::-webkit-scrollbar { display: none; }
 [data-nuclear-plugin-view][hidden] { display: none !important; }
 [data-nsp-nav] .nsp-nav-icon { color: #1db954; }
 
