@@ -30,10 +30,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Takayom1/nuclear-plugin-spotify-home.git"
+    "url": "https://github.com/Takayom1/nuclear-plugin-spotify-sync.git"
   },
   "bugs": {
-    "url": "https://github.com/Takayom1/nuclear-plugin-spotify-home/issues"
+    "url": "https://github.com/Takayom1/nuclear-plugin-spotify-sync/issues"
   },
   "files": [
     "dist",
