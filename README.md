@@ -30,9 +30,19 @@ The interface is in English, or in Russian when Nuclear's language is set to Rus
 - **Spotify Premium on the account that owns the app.** Spotify requires this for apps in development mode since February 2026.
 - **A streaming plugin that provides audio**, such as YouTube, SoundCloud or OmniSource. Nuclear finds each song there by artist and title; Spotify itself does not stream audio to third-party apps.
 
+## Installation
+
+**From a release (until the plugin is available in the store):**
+
+1. Download `plugin.zip` from the [latest release](https://github.com/Takayom1/nuclear-plugin-spotify-sync/releases/latest).
+2. Extract it to any folder.
+3. In Nuclear open **Plugins → Add Plugin** and select that folder, then enable **Home & Liked Songs for Spotify**.
+
+**From the plugin store (once it is listed):** open **Plugins → Store**, find **Home & Liked Songs for Spotify**, install and enable it.
+
 ## Setup
 
-1. Install the plugin from **Plugins → Store** and enable it.
+1. Make sure the official **Spotify** metadata plugin is installed and enabled (see Requirements).
 2. Open the **Liked Songs** tab and follow the steps on screen:
    1. On [developer.spotify.com/dashboard](https://developer.spotify.com/dashboard) click **Create app**. Add `http://127.0.0.1:8888/callback` under **Redirect URIs**, tick **Web API** and save.
    2. Paste the app's **Client ID** into the tab. No client secret is needed: login uses OAuth PKCE.
